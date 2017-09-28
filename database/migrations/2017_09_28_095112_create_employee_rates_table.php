@@ -15,6 +15,11 @@ class CreateEmployeeRatesTable extends Migration
     {
         Schema::create('employee_rates', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->integer('budget_rate');
+            $table->integer('actule_rate');
+            $table->integer('day_rate');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

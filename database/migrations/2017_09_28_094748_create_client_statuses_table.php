@@ -15,7 +15,8 @@ class CreateClientStatusesTable extends Migration
     {
         Schema::create('client_statuses', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('status') ;
+            //$table->timestamps();
         });
     }
 

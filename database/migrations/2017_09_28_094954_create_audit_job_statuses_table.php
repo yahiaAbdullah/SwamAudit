@@ -15,6 +15,7 @@ class CreateAuditJobStatusesTable extends Migration
     {
         Schema::create('audit_job_statuses', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('status');
             $table->timestamps();
         });
     }

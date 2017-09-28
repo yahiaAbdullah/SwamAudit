@@ -15,6 +15,13 @@ class CreateSheetItemManagementsTable extends Migration
     {
         Schema::create('sheet_item_managements', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('item_description');
+            $table->boolean('status');
+            $table->integer('type_id')->unsigned()->nullable() ;
+            $table->foreign('type_id')
+                  ->references('id')
+                  ->on('item_types')
+                  ->onDelete('set null') ;
             $table->timestamps();
         });
     }

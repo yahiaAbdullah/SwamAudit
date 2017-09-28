@@ -15,6 +15,20 @@ class CreateCasewaresTable extends Migration
     {
         Schema::create('casewares', function (Blueprint $table) {
             $table->increments('id');
+            $table->date('upload_date');
+            $table->string('file');
+
+            $table->integer('client_id')->unsigned() ;
+            $table->foreign('client_id')
+                  ->references('id')
+                  ->on('clients')
+                  ->onDelete('cascade') ;
+                  
+            $table->integer('user_id')->unsigned()->nullable() ;
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('set null') ;
             $table->timestamps();
         });
     }

@@ -15,6 +15,11 @@ class CreateFiscalYearsTable extends Migration
     {
         Schema::create('fiscal_years', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('fiscalyear') ;
+            $table->date("start_in") ;
+            $table->date("end_in") ;
+            $table->boolean('status') ;
+            $table->string('primary')->nullable() ;
             $table->timestamps();
         });
     }

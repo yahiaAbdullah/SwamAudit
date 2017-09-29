@@ -15,7 +15,27 @@ class CreateSheetContentsTable extends Migration
     {
         Schema::create('sheet_contents', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+
+            $table->integer('budget_id')->unsigned()->nullable() ;
+            $table->foreign('budget_id')
+                  ->references('id')
+                  ->on('budget_sheets')
+                  ->onDelete('set null') ;
+
+            $table->integer('item_id')->unsigned()->nullable() ;
+            $table->foreign('item_id')
+                  ->references('id')
+                  ->on('sheet_item_managements')
+                  ->onDelete('set null') ;
+
+          $table->integer('rate_id')->unsigned()->nullable() ;
+          $table->foreign('rate_id')
+                ->references('id')
+                ->on('employee_rates')
+                ->onDelete('set null') ;
+
+          $table->boolean('values');
+          $table->timestamps();
         });
     }
 

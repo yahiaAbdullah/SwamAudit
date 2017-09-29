@@ -15,7 +15,16 @@ class CreateBudgetSheetsTable extends Migration
     {
         Schema::create('budget_sheets', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+
+            $table->integer('audit_id')->unsigned()->nullable() ;
+            $table->foreign('audit_id')
+                  ->references('id')
+                  ->on('audit_jobs')
+                  ->onDelete('set null') ;
+
+          $table->boolean('status');
+          $table->boolean('main_city');
+          $table->timestamps();
         });
     }
 

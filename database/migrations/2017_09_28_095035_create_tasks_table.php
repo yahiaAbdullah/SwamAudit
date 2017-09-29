@@ -15,6 +15,13 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('audit_id')->unsigned()->nullable() ;
+            $table->foreign('audit_id')
+                  ->references('id')
+                  ->on('audit_jobs')
+                  ->onDelete('set null') ;
+
             $table->string('step');
             $table->date('expect_start_date');
             $table->date('start_date');

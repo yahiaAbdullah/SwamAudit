@@ -15,6 +15,12 @@ class CreateEmployeeRatesTable extends Migration
     {
         Schema::create('employee_rates', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('employee_id')->unsigned()->nullable() ;
+            $table->foreign('employee_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('set null') ;
+
             $table->string('title');
             $table->integer('budget_rate');
             $table->integer('actule_rate');

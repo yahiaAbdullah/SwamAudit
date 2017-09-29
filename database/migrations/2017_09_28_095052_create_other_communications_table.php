@@ -18,7 +18,7 @@ class CreateOtherCommunicationsTable extends Migration
             $table->date('date');
             $table->string('subject');
             $table->string('type');
-            
+
             $table->integer('sent_to')->unsigned() ;
             $table->foreign('sent_to')
                   ->references('id')
@@ -26,7 +26,7 @@ class CreateOtherCommunicationsTable extends Migration
                   ->onDelete('cascade') ;
 
             $table->integer('sent_by')->unsigned()->nullable() ;
-            $table->foreign('user_id')
+            $table->foreign('sent_by')
                   ->references('id')
                   ->on('users')
                   ->onDelete('set null') ;

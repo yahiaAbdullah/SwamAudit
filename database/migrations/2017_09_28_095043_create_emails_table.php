@@ -25,11 +25,11 @@ class CreateEmailsTable extends Migration
                   ->onDelete('cascade') ;
 
             $table->integer('sent_by')->unsigned()->nullable() ;
-            $table->foreign('user_id')
+            $table->foreign('sent_by')
                   ->references('id')
                   ->on('users')
                   ->onDelete('set null') ;
-                  
+
             $table->string('details');
             $table->string('file');
             $table->timestamps();
